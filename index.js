@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const moment = require('moment');
 const path = require('path');
+const util = require('util');
 
 module.exports = decor;
 
@@ -20,14 +21,12 @@ function decorate(consolelog, config) {
   return (...args) => {
     args = _.values(args);
     
+    
     // pretty print objects
     args = _.map(args, b => {
-      if (typeof b === 'object') {
-        return JSON.stringify(b, 0, 2);
-      } 
-      return b;
+      return util.inspect(b)
     });
-    
+
     // add time and location
     const time = moment().format('Y-MM-DD HH:mm:ss');
     const location = new Error().stack // get stack trace

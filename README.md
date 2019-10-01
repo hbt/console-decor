@@ -23,3 +23,13 @@ require('console-decor')({appdir: ''}); // show absolute path
 console.log('Hello World');
 
 ```
+
+### colors 
+
+uses utils.inspect.defaultOptions
+
+```
+util.inspect.defaultOptions.colors = true
+util.inspect.defaultOptions.maxArrayLength = 5;
+```
+
